@@ -41,7 +41,7 @@ This web application, developed using Node.js, Express.js, MongoDB, and Mongoose
 - **express** : Framework for Node.js. 
 - **express-ejs-layouts** : To prevent code redundancy.
 - **mongoose** : MongoDB ODM tool.
-- **multer** : Hanless file uploads and uniques name conventions.
+- **multer** : Hanless file uploads and unique name conventions.
 
 
 ## Project Structure
@@ -66,14 +66,14 @@ This web application, developed using Node.js, Express.js, MongoDB, and Mongoose
 
      - **`views/`**:All the static files are in this folder. 
 
-         - **`css/`**: All the stylesheet are in this folder.
+         - **`css/`**: All the stylesheets are in this folder.
              - **`/global.css`**:Stylesheet for complete application.
 
          - **`html/`**: All the templates are in this folder.   
-             - **`/error-page.ejs`**:This page will be rendered if any error occures on the server.
+             - **`/error-page.ejs`**:This page will be rendered if any error occurs on the server.
              - **`/file-details.ejs`**:This page represents the detailed view of the file in a table.
              - **`/home-page.ejs`**:This page represents the home page of the application with the list of all uploaded .csv files.
-             - **`/layout.ejs`**:This page is representing the layout of the appication.
+             - **`/layout.ejs`**:This page represents the layout of the application.
 
          - **`javascript/`**: All the scripting files are in this folder.
              - **`/file-details.js`**:This file has all the scripts of the file details page
