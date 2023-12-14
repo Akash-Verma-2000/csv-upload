@@ -1,0 +1,102 @@
+<!-- This is page is representing the home page of this application -->
+
+<!-- This is the notification bar and will be shown if any message is passed from the controller function  -->
+<div class="container my-5">
+
+    <%if(message){%>
+
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Response: </strong>
+            <%=message%>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <%}%>
+
+</div>
+
+
+
+
+<div class="container-fluid">
+
+    <!-- Main heading of the home page -->
+    <h1 class="text-center text-primary my-5 ">Upload Your CSV File Here</h1>
+    <!-- Tagline of the home page  -->
+    <h3 class="text-center text-secondary my-5">"Effortlessly upload your CSV file and experience efficient data
+        display."
+    </h3>
+
+    <!-- //This is the upload section of the home page where user can upload the csv files -->
+    <div class="container upload-section">
+        <form action="/upload" method="post" enctype="multipart/form-data"
+            class="d-flex justify-content-evenly align-items-center my-5">
+            <input type="file" name="fileName" required>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+    </div>
+
+    <!-- Telling how many file are there on the server -->
+    <h4 class="text-secondary mt-5 m-3">Total Files: <%=docs.length%>
+    </h4>
+
+    <!-- This is row contains the table of file lists -->
+    <div class="row">
+        <table class="table text-center table-hover">
+            <!-- This is the header of the file list table -->
+            <thead>
+                <tr>
+                    <th class="bg-primary text-light border border-secondary border-3 ">#</th>
+                    <th class="bg-primary text-light border border-secondary border-3 ">Name</th>
+                    <th class="bg-primary text-light border border-secondary border-3 ">Date</th>
+                    <th class="bg-primary text-light border border-secondary border-3 ">View</th>
+                    <th class="bg-primary text-light border border-secondary border-3 ">Delete</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+
+                <!-- Generating file list row dynamically -->
+                <% for(let i=0; i<docs.length; i++){ %>
+
+                    <tr>
+                        <th class="bg-light border border-secondary border-3">
+                            <%=i+1%>.
+                        </th>
+                        <td class="truncate-text text-start bg-light border border-secondary border-3">
+                            <%=docs[i].fileName%>
+                        </td>
+                        <td class="bg-light border border-secondary border-3">
+                            <%=docs[i].date%>
+                        </td>
+
+                        <td class="bg-light border border-secondary border-3">
+                            <a href="/details/<%=docs[i]._id%>"><i class="bi bi-filetype-csv text-primary fs-5"></i></a>
+                        </td>
+
+                        <td class="bg-light border border-secondary border-3">
+                            <!-- This forms is for deleting a file from the server -->
+                            <form action="/delete/<%=docs[i]._id%>" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-link">
+                                    <i class="bi bi-trash text-danger fs-5"></i>
+                                </button>
+                            </form>
+                        </td>
+
+                    </tr>
+
+                    <% }%>
+
+
+
+            </tbody>
+
+        </table>
+
+        <!-- If the table does not have any file  -->
+        <% if(!docs.length){%>
+            <p class="text-center text-secondary">No Data To Display</p>
+            <%}%>
+    </div>
+</div>

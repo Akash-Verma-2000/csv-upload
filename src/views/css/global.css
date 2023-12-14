@@ -1,0 +1,23 @@
+/* This style is giving shadow effect  on the nav bar */
+.shaddow {
+    box-shadow: 0px 1px 10px 0px black;
+}
+
+/* This style is making a dashed border around the upload section on the home page */
+.upload-section {
+    border: 4px dashed grey;
+}
+
+/* This is style is controlling the max length of the file name on home page  */
+.truncate-text {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* This is style is fixing a margine between the main header and the other page content */
+.content-section {
+    margin-top: 100px;
+}
+

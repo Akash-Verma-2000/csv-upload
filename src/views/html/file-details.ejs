@@ -1,0 +1,116 @@
+<!-- This is file is representing the detailed view of the .csv file  -->
+
+
+
+<!-- Name of the file which user has opened -->
+<h2 class="text-center text-primary my-5">
+    <%=doc.fileName %>
+</h2>
+
+
+
+<!-- This is the search bar -->
+<div class="container my-5">
+    <input type="text" class="form-control  border border-primary  border-3" placeholder="Search in 2nd column"
+        id="my-search-bar">
+</div>
+
+
+
+<div class="container-fluid ">
+
+    <div class="row">
+
+        <!-- Showing the number of row a file has  -->
+        <div class="col-10">
+            <h4 class="m-3 text-secondary">Total Rows: <%=doc.file.length%>
+            </h4>
+
+        </div>
+
+        <!-- Select option for the user to choose how many rows should be shown on a single page  -->
+        <div class="col-2">
+            <select class="form-select border border-primary border-3" id="records_size"
+                aria-label="Default select example">
+                <option selected>Rows/Page</option>
+                <option value="50">50 Rows/Page</option>
+                <option value="100">100 Rows/Page</option>
+                <option value="150">150 Rows/Page</option>
+                <option value="200">200 Rows/Page</option>
+                <option value="250">250 Rows/Page</option>
+                <option value="300">300 Rows/Page</option>
+                <option value="350">350 Rows/Page</option>
+                <option value="400">400 Rows/Page</option>
+                <option value="450">450 Rows/Page</option>
+                <option value="500">500 Rows/Page</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- This row contains the data table of the page  -->
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+
+                    <!-- This is row is the main header of the data table  -->
+                    <!-- Here I am generating the dynamic headers of the table as per the file  -->
+                    <% for( let key in doc.file[0]){%>
+
+                        <th class="bg-primary text-light border border-secondary border-3 ">
+                            <%=key%>
+                        </th>
+
+                        <% }%>
+
+                </tr>
+            </thead>
+            <tbody id="records">
+
+                <!-- Here I am generating the table rows for each document of the file -->
+
+                <% for(let i=0; i<doc.file.length; i++){ %>
+
+                    <tr>
+
+                        <!-- Here I am generating the table data of each document of the file -->
+
+                        <%for (let key in doc.file[i]) {%>
+                            <% if (doc.file[i].hasOwnProperty(key)) {%>
+
+                                <td class="bg-light border border-secondary border-3">
+                                    <%=doc.file[i][key]%>
+                                </td>
+
+                                <% }%>
+                                    <% }%>
+                    </tr>
+
+                    <% }%>
+
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- This is row is representing the pagination features  -->
+    <div class="row my-5">
+
+        <!-- Pagination detaials -->
+        <div class="col">
+            <div id="page-details">
+                <p>Showing 1 to 10 of 41</p>
+            </div>
+        </div>
+
+        <!-- Pagination features -->
+        <div class="col">
+            <nav aria-label="Page navigation example " class="d-flex justify-content-end">
+                <ul class="pagination" id="pagination">
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</div>
